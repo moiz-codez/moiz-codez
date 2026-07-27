@@ -1,4 +1,4 @@
-<svg viewBox="0 0 1000 1690" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fifteen projects by Sharann Manojkumar">
+<svg viewBox="0 0 1000 1450" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Projects by Muhammad Moiz">
   <style>
     :root { --ink:#000000; --paper:#FFFFFF; }
     @media (prefers-color-scheme:dark) { :root { --ink:#FFFFFF; --paper:#000000; } }
@@ -18,108 +18,87 @@
 
   <g class="mono">
     <g class="row r1" transform="translate(0 20)">
-      <text class="title" x="48" y="24">01 / API KEYCHAIN</text>
-      <text class="copy" x="48" y="49">Unified LLM gateway across eight inference networks, with encrypted credential storage and one consistent provider interface.</text>
-      <text class="copy" x="48" y="68">Tracks requests and usage analytics while protecting API keys with AES-256-GCM encryption.</text>
-      <text class="meta" x="48" y="87">NEXT.JS · TYPESCRIPT · FASTAPI · PYTHON · SUPABASE · SECURITY</text>
+      <text class="title" x="48" y="24">01 / PROJECT ALPHA</text>
+      <text class="copy" x="48" y="49">Full-stack web application with modern architecture and scalable design patterns.</text>
+      <text class="copy" x="48" y="68">Built with performance and developer experience in mind.</text>
+      <text class="meta" x="48" y="87">NEXT.JS · TYPESCRIPT · POSTGRESQL · DOCKER</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r2" transform="translate(0 130)">
-      <text class="title" x="48" y="24">02 / PROPOSALOS</text>
-      <text class="copy" x="48" y="49">AI-assisted RFP discovery and response platform built at Ambian Strategy from the initial architecture onward.</text>
-      <text class="copy" x="48" y="68">Collects opportunities from 11+ procurement portals, scores business fit, and reduces response work from days to hours.</text>
-      <text class="meta" x="48" y="87">NEXT.JS · FASTAPI · PYTHON · SUPABASE · SCRAPING · AI FIT-SCORING</text>
+      <text class="title" x="48" y="24">02 / PROJECT BETA</text>
+      <text class="copy" x="48" y="49">RESTful API service with microservice architecture and event-driven communication.</text>
+      <text class="copy" x="48" y="68">Handles high throughput with caching layers and queue-based processing.</text>
+      <text class="meta" x="48" y="87">NODE.JS · EXPRESS · REDIS · KUBERNETES · AWS</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r3" transform="translate(0 240)">
-      <text class="title" x="48" y="24">03 / KERN</text>
-      <text class="copy" x="48" y="49">Keyboard-driven personal data OS with schema-flexible JSONB storage and connected views for information and workflows.</text>
-      <text class="copy" x="48" y="68">Integrates GitHub, Notion, calendars, Linear and RSS, then exposes personal data through an MCP server.</text>
-      <text class="meta" x="48" y="87">REACT · TYPESCRIPT · POSTGRESQL · SUPABASE · JSONB · MCP</text>
+      <text class="title" x="48" y="24">03 / PROJECT GAMMA</text>
+      <text class="copy" x="48" y="49">Real-time analytics dashboard with data visualization and customizable widgets.</text>
+      <text class="copy" x="48" y="68">Processes streaming data and renders interactive charts for decision making.</text>
+      <text class="meta" x="48" y="87">REACT · D3.JS · WEBSOCKETS · MONGODB</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r4" transform="translate(0 350)">
-      <text class="title" x="48" y="24">04 / COSMOS</text>
-      <text class="copy" x="48" y="49">Terminal-native AI chatbot with a rich keyboard-first interface, file attachments, Markdown output and conversation history.</text>
-      <text class="copy" x="48" y="68">Provides access to 25+ language models through OpenRouter without forcing developers to leave the terminal.</text>
-      <text class="meta" x="48" y="87">PYTHON · TEXTUAL · OPENROUTER · TUI · CLI</text>
+      <text class="title" x="48" y="24">04 / AGENT CORE</text>
+      <text class="copy" x="48" y="49">Autonomous AI agent framework with tool-use capabilities and MCP integration.</text>
+      <text class="copy" x="48" y="68">Supports multi-step reasoning, external tool invocation, and conversation memory.</text>
+      <text class="meta" x="48" y="87">PYTHON · MCP · OPENAI · CLAUDE · HERMES</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r5" transform="translate(0 460)">
-      <text class="title" x="48" y="24">05 / HALLUCINATION SUPPRESSION</text>
-      <text class="copy" x="48" y="49">Research pipeline combining confidence scoring, named-entity routing, Wikidata evidence retrieval and contradiction checks.</text>
-      <text class="copy" x="48" y="68">Uses RoBERTa natural-language inference and explores a blockchain audit layer for traceable verification results.</text>
-      <text class="meta" x="48" y="87">PYTHON · TRANSFORMERS · NLP · WIKIDATA · ROBERTA · BLOCKCHAIN · SRIP 2026</text>
+      <text class="title" x="48" y="24">05 / LLM GATEWAY</text>
+      <text class="copy" x="48" y="49">Unified API gateway for multiple LLM providers with intelligent routing and fallback.</text>
+      <text class="copy" x="48" y="68">Manages API keys, tracks usage, and optimizes cost across providers.</text>
+      <text class="meta" x="48" y="87">FASTAPI · PYTHON · SUPABASE · SECURITY</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r6" transform="translate(0 570)">
-      <text class="title" x="48" y="24">06 / LANDROID</text>
-      <text class="copy" x="48" y="49">Land-intelligence workflow for drone-captured orthomosaic GeoTIFF imagery, delivered through a cross-platform client.</text>
-      <text class="copy" x="48" y="68">Derives NDVI insights, plant-health zones, tree counts and map overlays from geospatial source data.</text>
-      <text class="meta" x="48" y="87">FLUTTER · FASTAPI · PYTHON · SUPABASE · POSTGIS · GEOTIFF</text>
+      <text class="title" x="48" y="24">06 / INFRA TOOLKIT</text>
+      <text class="copy" x="48" y="49">Collection of DevOps scripts and Docker configurations for rapid deployment.</text>
+      <text class="copy" x="48" y="68">Includes CI/CD pipelines, container orchestration, and infrastructure as code.</text>
+      <text class="meta" x="48" y="87">DOCKER · KUBERNETES · TERRAFORM · GITHUB ACTIONS</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r7" transform="translate(0 680)">
-      <text class="title" x="48" y="24">07 / STUDENT DASHBOARD</text>
-      <text class="copy" x="48" y="49">Unified academic workspace for VIT students that replaces scattered information with one practical daily interface.</text>
-      <text class="copy" x="48" y="68">Combines attendance tracking, timetable access and planning tools around common student workflows.</text>
-      <text class="meta" x="48" y="87">REACT · NODE.JS · TYPESCRIPT · POSTGRESQL · ACADEMIC TOOLS</text>
+      <text class="title" x="48" y="24">07 / PORTFOLIO SITE</text>
+      <text class="copy" x="48" y="49">Personal portfolio and blog with server-side rendering and optimized performance.</text>
+      <text class="copy" x="48" y="68">Features dark mode, responsive design, and MDX-powered blog posts.</text>
+      <text class="meta" x="48" y="87">NEXT.JS · TAILWIND · MDX · VERCEL</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r8" transform="translate(0 790)">
-      <text class="title" x="48" y="24">08 / ARBOR</text>
-      <text class="copy" x="48" y="49">Visual problem-solving environment where each problem becomes a navigable hierarchy of tasks and sub-problems.</text>
-      <text class="copy" x="48" y="68">Supports decomposition, backtracking and AI-assisted reasoning through an interactive node-based canvas.</text>
-      <text class="meta" x="48" y="87">REACT · TYPESCRIPT · REACT FLOW · OPENAI API · INTERACTION DESIGN</text>
+      <text class="title" x="48" y="24">08 / DATA PIPELINE</text>
+      <text class="copy" x="48" y="49">ETL pipeline for processing and transforming large datasets with validation.</text>
+      <text class="copy" x="48" y="68">Handles data ingestion, transformation, and loading into analytical databases.</text>
+      <text class="meta" x="48" y="87">PYTHON · POSTGRESQL · REDIS · AIRFLOW</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r9" transform="translate(0 900)">
-      <text class="title" x="48" y="24">09 / NOTIONWIDGETS</text>
-      <text class="copy" x="48" y="49">Native iOS app that turns Notion databases into configurable home-screen widgets for frequently checked information.</text>
-      <text class="copy" x="48" y="68">Designed for schedules, tasks and academic events, with WidgetKit rendering and smart database filtering.</text>
-      <text class="meta" x="48" y="87">SWIFT · SWIFTUI · WIDGETKIT · NOTION API · IOS</text>
+      <text class="title" x="48" y="24">09 / CLI TOOLS</text>
+      <text class="copy" x="48" y="49">Developer productivity tools for the terminal with keyboard-driven interfaces.</text>
+      <text class="copy" x="48" y="68">Includes code generators, project scaffolding, and workflow automation.</text>
+      <text class="meta" x="48" y="87">NODE.JS · TYPESCRIPT · TUI · CLI</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r10" transform="translate(0 1010)">
-      <text class="title" x="48" y="24">10 / PLANNER</text>
-      <text class="copy" x="48" y="49">Native productivity planner focused on clear task scheduling, deadlines and prioritization without interface clutter.</text>
-      <text class="copy" x="48" y="68">Uses persistent local data and SwiftUI components to provide a responsive, platform-consistent planning experience.</text>
-      <text class="meta" x="48" y="87">SWIFT · SWIFTUI · CORE DATA · IOS</text>
+      <text class="title" x="48" y="24">10 / HERMES AGENT</text>
+      <text class="copy" x="48" y="49">Autonomous agent capable of multi-step task execution with tool orchestration.</text>
+      <text class="copy" x="48" y="68">Integrates with external APIs, databases, and filesystem for complex workflows.</text>
+      <text class="meta" x="48" y="87">PYTHON · OPENAI · MCP · TOOL USE</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r11" transform="translate(0 1120)">
-      <text class="title" x="48" y="24">11 / LOBE</text>
-      <text class="copy" x="48" y="49">Personal knowledge OS that brings thoughts, projects and life administration into one connected web workspace.</text>
-      <text class="copy" x="48" y="68">Combines rich documents, databases, calendars, kanban boards and a visual map of connected information.</text>
-      <text class="meta" x="48" y="87">TYPESCRIPT · REACT · POSTGRESQL · KNOWLEDGE SYSTEMS</text>
+      <text class="title" x="48" y="24">11 / OPEN SOURCE CONTRIBUTIONS</text>
+      <text class="copy" x="48" y="49">Active contributor to developer tools and AI frameworks in the open source ecosystem.</text>
+      <text class="copy" x="48" y="68">Bug fixes, feature additions, and documentation improvements across multiple projects.</text>
+      <text class="meta" x="48" y="87">GITHUB · COMMUNITY · DOCUMENTATION</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
     <g class="row r12" transform="translate(0 1230)">
-      <text class="title" x="48" y="24">12 / BILLING SYSTEM</text>
-      <text class="copy" x="48" y="49">Full-stack billing and inventory platform with dynamic customer sales, multi-product invoices and reusable templates.</text>
-      <text class="copy" x="48" y="68">Uses a flexible JSONB schema and JWT authorization across admin, franchise and cashier role boundaries.</text>
-      <text class="meta" x="48" y="87">NODE.JS · EXPRESS · TYPESCRIPT · POSTGRESQL · JSONB · JWT</text>
-      <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
-    </g>
-    <g class="row r13" transform="translate(0 1340)">
-      <text class="title" x="48" y="24">13 / TERMINALTYPE</text>
-      <text class="copy" x="48" y="49">Monkeytype-inspired terminal typing test designed for developers who prefer fast, keyboard-only tools.</text>
-      <text class="copy" x="48" y="68">Calculates words per minute and accuracy in real time, provides immediate feedback and installs through Homebrew.</text>
-      <text class="meta" x="48" y="87">JAVASCRIPT · NODE.JS · TUI · CLI · HOMEBREW</text>
-      <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
-    </g>
-    <g class="row r14" transform="translate(0 1450)">
-      <text class="title" x="48" y="24">14 / FINSIGHT AI</text>
-      <text class="copy" x="48" y="49">AI-assisted fintech project developed for the ArcNight 2026 hackathon to make portfolio information easier to interpret.</text>
-      <text class="copy" x="48" y="68">Explores conversational financial analysis and portfolio intelligence through a focused web interface.</text>
-      <text class="meta" x="48" y="87">PYTHON · NEXT.JS · AI · FINTECH · ARCNIGHT 2026</text>
-      <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
-    </g>
-    <g class="row r15" transform="translate(0 1560)">
-      <text class="title" x="48" y="24">15 / COURSE &amp; MODULE RECOGNITION</text>
-      <text class="copy" x="48" y="49">Document-processing utility that identifies courses and modules by extracting structured codes from institutional files.</text>
-      <text class="copy" x="48" y="68">Automates repetitive academic-document classification and converts unstructured source material into usable records.</text>
-      <text class="meta" x="48" y="87">PYTHON · DOCUMENT PARSING · DATA EXTRACTION · AUTOMATION</text>
+      <text class="title" x="48" y="24">12 / MORE COMING SOON</text>
+      <text class="copy" x="48" y="49">Always building and exploring new technologies. Stay tuned for upcoming projects.</text>
+      <text class="copy" x="48" y="68">Check the repositories tab for the latest work and experiments.</text>
+      <text class="meta" x="48" y="87">ALWAYS LEARNING · ALWAYS BUILDING</text>
       <line class="rule" x1="48" y1="104" x2="952" y2="104"/>
     </g>
   </g>

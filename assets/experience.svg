@@ -28,7 +28,7 @@
 
   <g class="rise a3">
     <text class="mono" x="48" y="234" font-size="12" fill="var(--accent)" letter-spacing="2">2021 –</text>
-    <text class="mono" x="136" y="234" font-size="15" fill="var(--bone)">University Name · B.Tech Computer Science</text>
+    <text class="mono" x="136" y="234" font-size="15" fill="var(--bone)">Mehran University of Engineering and Technology · BS Computer Science</text>
     <text class="mono" x="136" y="260" font-size="14" fill="var(--muted)">relevant coursework · achievements · activities</text>
   </g>
 

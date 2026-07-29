@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="580" viewBox="0 0 660 580" font-family="JBMono,ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace">
+<style>
+  .bg{fill:#ffffff}@media(prefers-color-scheme:dark){.bg{fill:#0d1117}}
+  .a{fill:#6e7681}@media(prefers-color-scheme:dark){.a{fill:#c9d1d9}}
+  .b{fill:#424a53}@media(prefers-color-scheme:dark){.b{fill:#f0f6fc}}
+  .c{fill:#8c959f}@media(prefers-color-scheme:dark){.c{fill:#8b949e}}
+  .accent{fill:#d29922}@media(prefers-color-scheme:dark){.accent{fill:#d29922}}
+  .key{fill:#a04100}@media(prefers-color-scheme:dark){.key{fill:#ffa657}}
+  .val{fill:#0550ae}@media(prefers-color-scheme:dark){.val{fill:#a5d6ff}}
+  .dim{fill:#afb8c1}@media(prefers-color-scheme:dark){.dim{fill:#484f58}}
+  .rule{stroke:#d8dee4}@media(prefers-color-scheme:dark){.rule{stroke:#30363d}}
+  @media(prefers-reduced-motion){animate{display:none}set{display:none}}
+  .pulse{animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  .cursor{animation:blink 1s step-end infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+</style>
+<rect width="660" height="580" rx="12" class="bg"/>
+
+<!-- Terminal ASCII art - left side -->
+<g font-size="12" class="a">
+<text x="18" y="40">             .---.</text>
+<text x="18" y="55">            /     \</text>
+<text x="18" y="70">            |.---.|</text>
+<text x="18" y="85">            ||   ||</text>
+<text x="18" y="100">            || M ||</text>
+<text x="18" y="115">            || M ||</text>
+<text x="18" y="130">            ||   ||</text>
+<text x="18" y="145">            |'---'|</text>
+<text x="18" y="160">            \     /</text>
+<text x="18" y="175">             '---'</text>
+<!-- Terminal prompt -->
+<text x="18" y="220" class="cursor" font-size="18">$ _</text>
+</g>
+
+<!-- Personal info - right side -->
+<g font-size="13">
+<text x="210" y="40" class="b" font-size="18" font-weight="bold">moiz@codez</text>
+<text x="210" y="58" class="dim" font-size="13">-----------</text>
+
+<text x="210" y="80" class="key">OS</text>
+<text x="248" y="80" class="val">Windows 11, Android 16, Ubuntu</text>
+
+<text x="210" y="98" class="key">Uptime</text>
+<text x="248" y="98" class="val" id="uptime_data">21 years, 6 months, 1 days</text>
+
+<text x="210" y="116" class="key">Host</text>
+<text x="248" y="116" class="val">Freelance</text>
+
+<text x="210" y="134" class="key">Kernel</text>
+<text x="248" y="134" class="val">CS Major / Full Stack / Agentic AI</text>
+
+<text x="210" y="152" class="key">IDE</text>
+<text x="248" y="152" class="val">VS Code</text>
+
+<text x="210" y="170" class="key">Spoken</text>
+<text x="248" y="170" class="val">Urdu, Sindhi, English, Japanese</text>
+
+<text x="210" y="188" class="key">Hobbies</text>
+<text x="248" y="188" class="val">Football, Hockey, Reading</text>
+
+<!-- Contact section -->
+<text x="210" y="220" class="dim" font-size="13">~/contact</text>
+<text x="210" y="234" class="dim" font-size="13">---------</text>
+
+<text x="210" y="254" class="key">Email</text>
+<text x="248" y="254" class="val">moiz.codez@gmail.com</text>
+
+<text x="210" y="272" class="key">LinkedIn</text>
+<text x="248" y="272" class="val">moiz-siyal</text>
+
+<text x="210" y="290" class="key">Reddit</text>
+<text x="248" y="290" class="val">moiz-codez</text>
+</g>
+
+<!-- GitHub stats section -->
+<g font-size="13">
+<text x="18" y="340" class="dim" font-size="13">~/github</text>
+<text x="18" y="354" class="dim" font-size="13">--------</text>
+
+<text x="18" y="374" class="key">Repos</text>
+<text x="80" y="374" class="val" id="repo_data">0</text>
+
+<text x="18" y="394" class="key">Stars</text>
+<text x="80" y="394" class="val" id="star_data">0</text>
+
+<text x="18" y="414" class="key">Commits</text>
+<text x="80" y="414" class="val" id="commit_data">0</text>
+
+<text x="18" y="434" class="key">Followers</text>
+<text x="80" y="434" class="val" id="follower_data">0</text>
+
+<text x="18" y="454" class="key">Contributed</text>
+<text x="80" y="454" class="val" id="contrib_data">0</text>
+
+<text x="18" y="474" class="key">LOC</text>
+<text x="80" y="474" class="val" id="loc_data">0</text>
+</g>
+
+<!-- Languages bar section -->
+<g font-size="11">
+<text x="240" y="360" class="key" font-size="13">Languages</text>
+
+<text x="240" y="382" class="a">C</text>
+<rect x="280" y="374" width="180" height="6" rx="3" class="dim"/>
+<rect x="280" y="374" width="50" height="6" rx="3" fill="#d29922"/>
+
+<text x="240" y="402" class="a">C++</text>
+<rect x="280" y="394" width="180" height="6" rx="3" class="dim"/>
+<rect x="280" y="394" width="45" height="6" rx="3" fill="#e34c26"/>
+
+<text x="240" y="422" class="a">Java</text>
+<rect x="280" y="414" width="180" height="6" rx="3" class="dim"/>
+<rect x="280" y="414" width="40" height="6" rx="3" fill="#b07219"/>
+
+<text x="240" y="442" class="a">Python</text>
+<rect x="280" y="434" width="180" height="6" rx="3" class="dim"/>
+<rect x="280" y="434" width="90" height="6" rx="3" fill="#3572a5"/>
+
+<text x="240" y="462" class="a">JavaScript</text>
+<rect x="280" y="454" width="180" height="6" rx="3" class="dim"/>
+<rect x="280" y="454" width="65" height="6" rx="3" fill="#f1e05a"/>
+
+<text x="240" y="482" class="a">TypeScript</text>
+<rect x="280" y="474" width="180" height="6" rx="3" class="dim"/>
+<rect x="280" y="474" width="55" height="6" rx="3" fill="#3178c6"/>
+</g>
+
+<!-- Footer -->
+<g font-size="11" class="c">
+<text x="18" y="520">────────────────────────────────────</text>
+<text x="18" y="538">• <tspan class="accent">uptime</tspan> calculated from 2005-01-29</text>
+<text x="18" y="554">• <tspan class="pulse">●</tspan> stats auto-refresh daily</text>
+<text x="18" y="570">• moiz-codez.github.io</text>
+</g>
+</svg>

@@ -1,61 +1,56 @@
 #!/usr/bin/env python3
-"""Turn a photo into ascii.svg — a self-typing, monochrome ASCII portrait.
+"""Turn assets/profile.jpg into ascii.svg -- the real, photo-based portrait.
 
-This is the generator that produced the portrait at the top of the README.
-Run it once; it is not on a schedule, unlike scripts/generate_stats.py.
+This replaces the placeholder silhouette that make_placeholder_portrait.py
+drew. It's a one-off: run it once you've added assets/profile.jpg, and
+again any time you swap the photo. It is NOT wired into the daily
+GitHub Actions workflow on purpose -- background removal needs real compute
+(a ~176 MB model, on first run) that has no business running on a cron.
 
     pip install pillow numpy opencv-python-headless rembg onnxruntime
-    python3 scripts/make_portrait.py photo.png --crop 400,110,910,790
-    python3 scripts/embed_portrait_font.py      # inline the font, see below
+    python3 scripts/make_portrait.py assets/profile.jpg
+    python3 scripts/make_portrait.py assets/profile.jpg --crop 120,40,760,820
 
-The first run downloads a ~176 MB background-removal model, once.
+Two things decide whether the output looks good, and neither is a script
+parameter:
+  * The photo. ASCII draws with shadow, not detail -- roughly a dozen
+    brightness levels in total. Side light (a window at ~45 degrees),
+    a tight crop from chin to just above the hair, and real resolution
+    all matter. A low-res headshot loses fine features like glasses on
+    downscale; flat frontal light renders the face as a hole.
+  * The darkening curve below (CURVE). Skip it and the face comes out
+    washed out -- brows, glasses and lips all dissolve together.
 
-Two things decide whether the output is any good, and neither is a parameter:
-
-  * The photo. ASCII draws with shadow, not detail — about 13 brightness levels
-    in total. You need side light (a window at ~45°, everything else off), a
-    tight crop from chin to just above the hair, and real resolution. A 320px
-    headshot fails: thin features like glasses frames are averaged away on
-    downscale. Flat frontal light renders the face as a hole.
-  * The darkening curve below. Without it the face comes out washed out and
-    featureless — brows, glasses and lips all dissolve.
-
-The grid bakes in an advance width of exactly 0.600 em (CHAR_W / FONT_SIZE), so
-after generating, run scripts/embed_portrait_font.py to inline JetBrains Mono.
-Otherwise a viewer whose default monospace is narrower — Consolas is ≈0.55 —
-sees the portrait about 7% too narrow.
-
-Motion is SMIL, because GitHub strips <script> from READMEs: each row is
-revealed by a clipPath wipe with a cursor block riding its edge, staggered top
-to bottom, frozen at the end so it prints once and stops.
+Font and color come from scripts/lib/svgkit.py, the same module every other
+graphic on this profile uses, so the portrait matches the rest of the page
+instead of carrying its own separate font subset.
 """
 import argparse
+import os
 import sys
 
-import cv2
-import numpy as np
-from PIL import Image
-from rembg import remove
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from lib import svgkit
 
 RAMP = " .`:-=+*cs#%@"     # bright/sparse -> dark/dense; leading space = blank
 COLS = 90                  # below ~88 the face muddies; far above it dominates
 CLAHE_CLIP = 3.0           # higher amplifies skin texture into noise
-GAMMA = 1.0                # ramp mapping exponent
-CURVE = 1.7                # the darkening curve — the difference-maker
-CROP_BOTTOM = 0.0          # fraction to trim off the bottom (torso, chair)
-ROW_RATIO = 0.48           # monospace cells are about twice as tall as wide
+GAMMA = 1.0                # ramp-mapping exponent
+CURVE = 1.7                # the darkening curve -- the difference-maker
+ROW_RATIO = 0.48           # monospace cells run about twice as tall as wide
 
-FG_LIGHT = "#6e7681"       # readable on GitHub light — the portrait's grey
-FG_DARK = "#c9d1d9"        # and its dark-mode step
-CHAR_W = 7.74              # 0.600 em at FONT_SIZE — keep these in step
+CHAR_W = 7.74               # advance width the whole grid assumes
 FONT_SIZE = 12.9
 LINE_H = 15
-ROW_DELAY = 0.09           # per-row stagger, seconds
-FAMILY = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
+ROW_DELAY = 0.09            # per-row stagger, seconds
 
 
 def prep(path, crop=None):
-    """Cut out the background, even the local contrast, then darken."""
+    import cv2
+    import numpy as np
+    from PIL import Image
+    from rembg import remove
+
     src = Image.open(path).convert("RGBA")
     if crop:
         src = src.crop(crop)
@@ -63,25 +58,19 @@ def prep(path, crop=None):
     cut = remove(src)
     alpha = np.array(cut.split()[-1])
 
-    # Composite onto white so everything outside the subject maps to the blank
-    # end of the ramp. Skip this and the background fills with @ and %.
     white = Image.new("RGBA", cut.size, (255, 255, 255, 255))
     gray = np.array(Image.alpha_composite(white, cut).convert("L"))
 
-    gray = cv2.bilateralFilter(gray, 11, 50, 50)      # smooth skin, keep edges
-    gray = cv2.createCLAHE(clipLimit=CLAHE_CLIP,
-                           tileGridSize=(8, 8)).apply(gray)
+    gray = cv2.bilateralFilter(gray, 11, 50, 50)
+    gray = cv2.createCLAHE(clipLimit=CLAHE_CLIP, tileGridSize=(8, 8)).apply(gray)
     gray = (255.0 * (gray / 255.0) ** CURVE).astype("uint8")
-    gray[alpha < 20] = 255                            # force the matte to white
+    gray[alpha < 20] = 255
     return Image.fromarray(gray)
 
 
 def to_lines(img, cols=COLS, gamma=GAMMA):
+    from PIL import Image
     w, h = img.size
-    if CROP_BOTTOM:
-        img = img.crop((0, 0, w, int(h * (1 - CROP_BOTTOM))))
-        w, h = img.size
-
     rows = int(cols * (h / w) * ROW_RATIO)
     img = img.resize((cols, rows), Image.LANCZOS)
     px = list(img.getdata())
@@ -106,35 +95,24 @@ def build_svg(lines, cols=COLS):
     width = int(cols * CHAR_W + pad * 2)
     height = len(lines) * LINE_H + pad * 2
 
-    p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" '
-         f'height="{height}" viewBox="0 0 {width} {height}" '
-         f'font-family="{FAMILY}">',
-         f'<style>.a{{fill:{FG_LIGHT}}}'
-         f'@media(prefers-color-scheme:dark){{.a{{fill:{FG_DARK}}}}}</style>']
+    p = [svgkit.svg_open(width, height, "Muhammad Moiz"), svgkit.style_block()]
 
     for i, line in enumerate(lines):
         y = pad + i * LINE_H
-        begin = f"{i * ROW_DELAY:.2f}s"
-        end = f"{(i + 1) * ROW_DELAY:.2f}s"
+        begin, end = i * ROW_DELAY, (i + 1) * ROW_DELAY
         w = max(len(line), 1) * CHAR_W
-        safe = (line.replace("&", "&amp;").replace("<", "&lt;")
-                    .replace(">", "&gt;"))
+        safe = svgkit.esc(line)
 
-        p.append(f'<clipPath id="c{i}"><rect x="{pad}" y="{y}" '
-                 f'height="{LINE_H}" width="0">'
+        p.append(f'<clipPath id="c{i}"><rect x="{pad}" y="{y}" height="{LINE_H}" width="0">'
                  f'<animate attributeName="width" from="0" to="{w:.1f}" '
-                 f'begin="{begin}" dur="{ROW_DELAY}s" fill="freeze"/>'
-                 f'</rect></clipPath>')
-        p.append(f'<g clip-path="url(#c{i})"><text xml:space="preserve" '
-                 f'x="{pad}" y="{y + 11.2:.1f}" class="a" '
-                 f'font-size="{FONT_SIZE}">{safe}</text></g>')
-        # the cursor: a small block riding the wipe edge, gone once the row lands
-        p.append(f'<rect y="{y + 1}" width="6" height="12" class="a" '
-                 f'opacity="0">'
+                 f'begin="{begin:.2f}s" dur="{ROW_DELAY}s" fill="freeze"/></rect></clipPath>')
+        p.append(f'<g clip-path="url(#c{i})"><text xml:space="preserve" x="{pad}" '
+                 f'y="{y + 11.2:.1f}" class="data" font-size="{FONT_SIZE}">{safe}</text></g>')
+        p.append(f'<rect y="{y + 1}" width="6" height="12" class="data" opacity="0">'
                  f'<animate attributeName="x" from="{pad}" to="{pad + w:.1f}" '
-                 f'begin="{begin}" dur="{ROW_DELAY}s" fill="freeze"/>'
-                 f'<set attributeName="opacity" to="0.8" begin="{begin}"/>'
-                 f'<set attributeName="opacity" to="0" begin="{end}"/></rect>')
+                 f'begin="{begin:.2f}s" dur="{ROW_DELAY}s" fill="freeze"/>'
+                 f'<set attributeName="opacity" to="0.8" begin="{begin:.2f}s"/>'
+                 f'<set attributeName="opacity" to="0" begin="{end:.2f}s"/></rect>')
 
     p.append("</svg>")
     return "".join(p)
@@ -142,15 +120,20 @@ def build_svg(lines, cols=COLS):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("photo")
-    ap.add_argument("out", nargs="?", default="ascii.svg")
-    ap.add_argument("--crop", help="left,top,right,bottom, applied first — crop "
-                                   "tight to the head so the whole grid goes to "
-                                   "the face")
+    ap.add_argument("photo", nargs="?", default=os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets", "profile.jpg"))
+    ap.add_argument("out", nargs="?", default=None)
+    ap.add_argument("--crop", help="left,top,right,bottom, applied first")
     ap.add_argument("--cols", type=int, default=COLS)
-    ap.add_argument("--preview", action="store_true",
-                    help="print the ASCII to the terminal as well")
+    ap.add_argument("--preview", action="store_true", help="also print the ASCII to the terminal")
     args = ap.parse_args()
+
+    out = args.out or os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "ascii.svg")
+
+    if not os.path.exists(args.photo):
+        sys.exit(f"no photo at {args.photo} -- add it there first "
+                  f"(see README: 'assets/profile.jpg'), or pass a path explicitly")
 
     crop = None
     if args.crop:
@@ -163,10 +146,9 @@ def main():
     if args.preview:
         print("\n".join(lines))
 
-    with open(args.out, "w", encoding="utf-8") as f:
+    with open(out, "w", encoding="utf-8") as f:
         f.write(build_svg(lines, cols=args.cols))
-    print(f"wrote {args.out} — {len(lines)} rows, {args.cols} columns")
-    print("next: python3 scripts/embed_portrait_font.py")
+    print(f"wrote {out} -- {len(lines)} rows, {args.cols} columns")
 
 
 if __name__ == "__main__":

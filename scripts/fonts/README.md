@@ -1,26 +1,32 @@
 # Embedded typeface
 
 [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) v2.304, subset to
-only the characters each graphic actually draws, and inlined into the SVGs as
-base64 `@font-face`.
+printable ASCII plus a handful of punctuation marks the diagrams use (en/em
+dash, middle dot, arrow, star), and inlined into every SVG on this profile as
+base64 `@font-face` via `scripts/lib/svgkit.py`.
 
 Why inline it at all:
 
-* **Metrics.** The portrait's character grid assumes an advance width of exactly
-  0.600 em. JetBrains Mono is 600/1000 units, so the geometry is unchanged — but
-  a viewer whose default monospace is narrower (Consolas is ≈0.55) would
-  otherwise see the portrait about 7% too narrow. Inlining pins it.
-* **An external font URL cannot work here.** These SVGs are loaded through
-  `<img>`, and a browser refuses to fetch subresources for an image document.
-  A base64 data URI is the only mechanism, and it keeps the page free of
-  third-party requests.
+* **These SVGs are loaded through `<img>`.** A browser refuses to fetch
+  subresources — including external font URLs — inside an image document, so
+  a normal `@font-face { src: url(...) }` pointing off-repo would simply never
+  load. A base64 data URI is the only mechanism, and it keeps the page free of
+  third-party requests as a side effect.
+* **Metrics.** The portrait's character grid assumes an advance width of
+  exactly 0.600 em. JetBrains Mono is 600/1000 units, so the geometry lines
+  up — but a viewer whose default monospace is narrower (Consolas is ≈0.55)
+  would otherwise see the portrait squeezed.
 
 | file | weight | covers |
 |---|---|---|
-| `jbmono-ramp.woff2` | 400 | the 13 ramp characters in `ascii.svg` |
-| `jbmono-head.woff2` | 600 | the letters used by the section headings |
-| `jbmono-400.woff2` | 400 | basic latin, for the stat graphics |
-| `jbmono-600.woff2` | 600 | basic latin, for the stat graphics |
+| `jbmono-regular.woff2` | 400 | printable ASCII + a few symbols |
+| `jbmono-semibold.woff2` | 600 | same set, semibold |
 
 Licensed under the SIL Open Font License 1.1 — see `OFL.txt`. Subsetting and
-redistribution in this form are permitted; the reserved font name is unchanged.
+redistribution in this form are permitted; the reserved font name is
+unchanged.
+
+To regenerate the subset (e.g. if a new diagram needs a character outside
+this set), see the one-off shell block in the repo's build notes, or just
+run `fonttools subset` against `JetBrainsMonoNL-{Regular,SemiBold}.ttf` with
+an updated `--text-file`.

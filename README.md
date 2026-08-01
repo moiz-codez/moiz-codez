@@ -31,3 +31,10 @@
 <img src="./hd-timeline.svg" width="940" alt="timeline"/>
 
 <img src="./timeline.svg" width="940" alt="career and education timeline"/>
+
+## Inspiration
+
+- [tayyabadev](https://github.com/tayyabadev) for the “HI, I'M MOIZ” text
+- [andriidrok1](https://github.com/andriidrok1) for the ASCII animation profile image
+- [Andrew6rant](https://github.com/Andrew6rant) for the neofetch design
+- [Sharann-del](https://github.com/Sharann-del) for the timeline and ecosystem designs

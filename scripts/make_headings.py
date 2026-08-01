@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""Build hd-*.svg -- a heading label plus a hairline running to the right
-edge, one per section. Rendered as SVG (not markdown headers) because
-GitHub strips <style> from READMEs, and an image is the only way to put
-this page's own typeface on a heading."""
 import os
 import sys
 

@@ -1,24 +1,3 @@
-"""Shared visual language for every SVG on the profile.
-
-One font, one palette, one animation vocabulary — reused by the portrait,
-the neofetch card, the hero banner, the ecosystem map and the timeline, so
-the page reads as one system instead of four stitched-together READMEs.
-
-Design notes:
-  * Font is MJBMono, a subset of JetBrains Mono inlined as base64 woff2
-    (see scripts/fonts/). Inlining is required, not cosmetic: every graphic
-    here is loaded through <img> on GitHub, and browsers refuse subresource
-    fetches inside an image document, so an external @font-face URL simply
-    never loads. Inlining also pins the advance width so rows / columns
-    that assume a fixed character cell (the portrait, the year grid) don't
-    drift on a viewer whose default monospace is narrower.
-  * Colors are GitHub's own light/dark tokens, so the SVGs sit flush with
-    the surrounding page instead of fighting it.
-  * Motion is SMIL (<animate>, clipPath wipes), because GitHub strips
-    <script> and <style>-based keyframe triggers don't matter here since we
-    already need @font-face in <style> — SMIL is the only scripting-free
-    option left for a self-playing reveal.
-"""
 import base64
 import os
 

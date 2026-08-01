@@ -1,29 +1,5 @@
 #!/usr/bin/env python3
-"""Turn assets/profile.jpg into ascii.svg -- the real, photo-based portrait.
-
-Run it once you've added assets/profile.jpg, and again any time you swap the
-photo. It is NOT wired into the daily GitHub Actions workflow on purpose --
-background removal needs real compute (a ~176 MB model, on first run) that has
-no business running on a cron.
-
-    pip install pillow numpy opencv-python-headless rembg onnxruntime
-    python3 scripts/make_portrait.py assets/profile.jpg
-    python3 scripts/make_portrait.py assets/profile.jpg --crop 120,40,760,820
-
-Two things decide whether the output looks good, and neither is a script
-parameter:
-  * The photo. ASCII draws with shadow, not detail -- roughly a dozen
-    brightness levels in total. Side light (a window at ~45 degrees),
-    a tight crop from chin to just above the hair, and real resolution
-    all matter. A low-res headshot loses fine features like glasses on
-    downscale; flat frontal light renders the face as a hole.
-  * The darkening curve below (CURVE). Skip it and the face comes out
-    washed out -- brows, glasses and lips all dissolve together.
-
-Font and color come from scripts/lib/svgkit.py, the same module every other
-graphic on this profile uses, so the portrait matches the rest of the page
-instead of carrying its own separate font subset.
-"""
+"""Turn assets/profile.jpg into ascii.svg -- the real, photo-based portrait."""
 import argparse
 import os
 import sys

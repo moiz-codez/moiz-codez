@@ -1,7 +1,5 @@
 name: refresh system info
 
-# No push trigger on its own commits: this job commits neofetch.svg, and a
-# push trigger would make it re-run on that commit forever.
 on:
   schedule:
     - cron: "17 5 * * *"   # once a day
@@ -39,7 +37,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Standard library only -- nothing to install.
       - name: Refresh neofetch.svg
         run: python3 scripts/generate_neofetch.py
 

@@ -13,7 +13,7 @@ from lib import svgkit
 
 WIDTH, HEIGHT = 1000, 620
 HUB = dict(x=500, y=330, w=210, h=64, title="MOIZ.SYS", sub="full-stack \u00d7 agentic pipeline")
-NODE_W, NODE_H = 190, 72
+NODE_W, NODE_H = 220, 72
 
 NODES = [
     ("Frontend", "React \u00b7 Next.js \u00b7 Tailwind"),
@@ -41,7 +41,7 @@ def layout():
     return positions
 
 
-def wrap_subtitle(text, max_chars=31):
+def wrap_subtitle(text, max_chars=28):
     parts = text.split(" \u00b7 ")
     lines = [parts[0]]
     for part in parts[1:]:

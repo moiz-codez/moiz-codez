@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Turn assets/profile.jpg into ascii.svg -- the real, photo-based portrait.
 
-This replaces the placeholder silhouette that make_placeholder_portrait.py
-drew. It's a one-off: run it once you've added assets/profile.jpg, and
-again any time you swap the photo. It is NOT wired into the daily
-GitHub Actions workflow on purpose -- background removal needs real compute
-(a ~176 MB model, on first run) that has no business running on a cron.
+Run it once you've added assets/profile.jpg, and again any time you swap the
+photo. It is NOT wired into the daily GitHub Actions workflow on purpose --
+background removal needs real compute (a ~176 MB model, on first run) that has
+no business running on a cron.
 
     pip install pillow numpy opencv-python-headless rembg onnxruntime
     python3 scripts/make_portrait.py assets/profile.jpg

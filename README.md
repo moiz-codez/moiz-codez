@@ -28,10 +28,6 @@
 
 <img src="./system-map.svg" width="940" alt="tech stack ecosystem, radiating from one pipeline"/>
 
-<div align="center">
-<img src="https://skillicons.dev/icons?i=c,cpp,java,py,js,ts,react,nextjs,nodejs,express,flask,django,fastapi,mongodb,postgres,mysql,redis,firebase,supabase,docker,kubernetes,aws,gcp,vercel,git,linux,arduino,flutter,dart,androidstudio&perline=11" alt="tech stack icons"/>
-</div>
-
 <img src="./hd-timeline.svg" width="940" alt="timeline"/>
 
 <img src="./timeline.svg" width="940" alt="career and education timeline"/>

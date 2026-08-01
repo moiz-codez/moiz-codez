@@ -26,7 +26,6 @@ Licensed under the SIL Open Font License 1.1 — see `OFL.txt`. Subsetting and
 redistribution in this form are permitted; the reserved font name is
 unchanged.
 
-To regenerate the subset (e.g. if a new diagram needs a character outside
-this set), see the one-off shell block in the repo's build notes, or just
+To regenerate the subset if a new diagram needs a character outside this set,
 run `fonttools subset` against `JetBrainsMonoNL-{Regular,SemiBold}.ttf` with
 an updated `--text-file`.

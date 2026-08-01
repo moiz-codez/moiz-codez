@@ -57,7 +57,7 @@ def mascot_lines():
     return out
 
 
-# key -> value rows. `None` value means "filled in by generate_neofetch.py".
+# key -> value rows. `None` values are computed while rendering.
 ROWS = [
     ("OS", "Windows 11 \u00b7 Android 16 \u00b7 Ubuntu"),
     ("Uptime", None),  # computed

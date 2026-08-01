@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Build system-map.svg -- a hub-and-spoke view of the stack, in the same
-masked-wire style as Sharann-del's ecosystem.svg: wires are drawn first,
-then a <mask> punches a hole wherever a node sits, so nothing ever overlaps
-a label and the whole thing stays transparent on GitHub's own background.
-"""
+"""Build system-map.svg as a hub-and-spoke view of the stack."""
 import math
 import os
 import sys

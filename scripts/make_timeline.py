@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""Build timeline.svg -- the route so far, in Sharann-del's axis-with-ticks
-style: one horizontal rule, markers alternating above/below, a live pulse on
-"now"."""
+"""Build timeline.svg with the current role highlighted as a live signal."""
 import os
 import sys
 

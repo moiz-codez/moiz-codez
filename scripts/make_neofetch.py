@@ -3,7 +3,7 @@
 
 Once .github/workflows/stats.yml runs on your repo (needs the built-in
 GITHUB_TOKEN, nothing to add), scripts/generate_neofetch.py takes over and
-overwrites this file with real numbers on every push + daily cron.
+overwrites this file with real numbers on the daily cron or manual dispatch.
 """
 import os
 import sys
@@ -18,6 +18,8 @@ PLACEHOLDER = dict(repos="\u2014", contributed="\u2014", stars="\u2014",
 def main():
     out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "neofetch.svg")
+    if os.path.exists(out):
+        sys.exit(f"refusing to overwrite existing file: {out}")
     with open(out, "w", encoding="utf-8") as f:
         f.write(build(PLACEHOLDER))
     print(f"wrote {out} (placeholder numbers -- run the Action, or "

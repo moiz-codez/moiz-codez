@@ -61,7 +61,6 @@ def mascot_lines():
 ROWS = [
     ("OS", "Windows 11 \u00b7 Android 16 \u00b7 Ubuntu"),
     ("Uptime", None),  # computed
-    ("Host", "Verior \u2014 Execution Lead"),
     ("Kernel", "B.S. Computer Science, MUET \u201927"),
     ("IDE", "VS Code"),
     ("", ""),

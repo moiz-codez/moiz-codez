@@ -112,8 +112,6 @@ def build():
                  + node_text(cx, cy, title, sub) + '</g>')
 
     p.append(f'<line x1="48" y1="{HEIGHT-30}" x2="{WIDTH-48}" y2="{HEIGHT-30}" class="rule" stroke-width="1"/>')
-    p.append(svgkit.label(WIDTH - 48, HEIGHT - 12, "LINES ANIMATE ONCE ON LOAD", 9.5, "dim", "end",
-                           spacing="1.5"))
     p.append("</svg>")
     return "".join(p)
 

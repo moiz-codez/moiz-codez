@@ -20,13 +20,9 @@
 > Computer Science major at Mehran University of Engineering & Technology, Hyderabad, Sindh.<br>
 > Full-stack developer, currently deep in agentic AI.
 
-<!-- I'm usually the one holding the messy middle together — coordinating between product, QA and dev so the release actually ships on time. At [Verior](https://www.linkedin.com/company/81822374/) that went from a QA internship to Execution Lead inside three months; from there it was release trains, sprint velocity, and turning "it's flaky" into a repeatable pipeline. -->
-
 <img src="./hd-system-info.svg" width="940" alt="system info"/>
 
 <img src="./neofetch.svg" width="940" alt="moiz@codez system info"/>
-
-<!-- <sub>`assets/profile.jpg` isn't in this build yet, so `ascii.svg` above is a placeholder silhouette, and the GitHub Stats rows show "—" until the Actions workflow runs once. See <b>about this readme</b> below to switch both on.</sub> -->
 
 <img src="./hd-ecosystem.svg" width="940" alt="ecosystem"/>
 

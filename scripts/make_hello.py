@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-"""Build hello.svg -- the "hi, it's me" banner.
-
-tayyabadev's README opens with a big decorative ASCII-art name in a static
-<pre> block. This keeps that spirit but borrows the portrait's own trick:
-each row of the letterforms wipes in left-to-right with a cursor riding the
-edge, the same clipPath animation ascii.svg uses, so the two pieces feel
-like one system instead of two READMEs taped together.
-"""
 import os
 import sys
 
@@ -34,7 +26,7 @@ CHAR_W, LINE_H, FONT_SIZE = 10.6, 22, 17
 PAD_X, PAD_TOP = 6, 10
 ROW_DELAY = 0.11
 SUBTITLE = "Full-Stack Developer  \u00b7  Agentic AI  \u00b7  Hyderabad, Sindh, Pakistan"
-TAGLINE = "CS @ Mehran University  \u00b7  Execution Lead @ Verior  \u00b7  github.com/moiz-codez"
+TAGLINE = "CS @ Mehran University  \u00b7  github.com/moiz-codez"
 
 
 def build():

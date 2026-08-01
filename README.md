@@ -32,9 +32,40 @@
 
 <img src="./timeline.svg" width="940" alt="career and education timeline"/>
 
-## Inspiration
+## ❤️ A Note of Thanks & Inspiration
 
-- [tayyabadev](https://github.com/tayyabadev) for the “HI, I'M MOIZ” text
-- [andriidrok1](https://github.com/andriidrok1) for the ASCII animation profile image
-- [Andrew6rant](https://github.com/Andrew6rant) for the neofetch design
-- [Sharann-del](https://github.com/Sharann-del) for the timeline and ecosystem designs
+One of the things I love most about the open-source community is that knowledge, creativity, and inspiration are meant to be shared.
+
+This README didn't come together out of nowhere. While exploring GitHub, I came across several incredible developer profiles that genuinely inspired me. Seeing their creativity motivated me to experiment, learn new techniques, and challenge myself to build a profile that reflects who I am.
+
+I didn't want to simply copy their work—I wanted to understand what made their designs so great, take inspiration from them, and reimagine those ideas in my own way. Every section has been customized, redesigned, and adapted to match my personality and style, but the original spark came from these amazing developers.
+
+They've unknowingly helped me learn more about GitHub profile design, Markdown, SVG animations, Github Workflow and creative presentation. This README exists because of the open-source mindset they embraced by sharing their work with the community.
+
+### 🌟 Thank You
+
+- **[tayyabadev](https://github.com/tayyabadev)**  
+  Inspired the **"HI, I'M MOIZ"** hero section that welcomes visitors to my profile.
+
+- **[andriidrok1](https://github.com/andriidrok1)**  
+  Inspired the animated **ASCII profile artwork**, which encouraged me to experiment with terminal-style visuals.
+
+- **[Andrew6rant](https://github.com/Andrew6rant)**  
+  Inspired the **Neofetch-inspired developer card**, one of my favorite sections of this README.
+
+- **[Sharann-del](https://github.com/Sharann-del)**  
+  Inspired the **timeline** and **developer ecosystem** sections that help tell my journey in a more engaging way.
+
+## 🌍 Standing on the Shoulders of Giants
+
+Every developer starts by learning from others.
+
+This profile is another example of that beautiful cycle. I learned from these talented creators, built upon their ideas, and transformed them into something that feels uniquely mine. I hope that, one day, someone discovers my profile, finds inspiration in it, and creates something even better.
+
+That's what makes open source and the developer community so special—we don't just write code; we inspire one another to keep learning, improving, and building.
+
+To everyone mentioned above: **thank you** for sharing your creativity with the world. Your work inspired another developer, and I'm genuinely grateful for it.
+
+If you're visiting my profile, I highly encourage you to check out their GitHub profiles—they're all incredibly talented and absolutely worth following.
+
+Happy coding! ❤️🚀

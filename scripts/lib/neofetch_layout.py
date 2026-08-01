@@ -77,6 +77,3 @@ ROWS = [
     ("LinkedIn", "moiz-siyal"),
     ("Reddit", "u/moiz-codez"),
 ]
-
-# GitHub-stats rows are appended separately since they carry live numbers.
-GH_ROW_LABELS = ["Repos", "Contributed", "Stars", "Commits (1y)", "Followers"]

@@ -1,5 +1,5 @@
 from . import svgkit
-from .neofetch_layout import ROWS, GH_ROW_LABELS, mascot_lines, uptime_string
+from .neofetch_layout import ROWS, mascot_lines, uptime_string
 
 MASCOT_CHAR_W, MASCOT_LINE_H, MASCOT_FS = 7.6, 13.5, 11
 ROW_H = 21
@@ -39,9 +39,7 @@ def _kv_row(x, y, key, value, delay):
             f'</text></g>')
 
 
-def build(gh_stats):
-    """gh_stats: dict with keys repos, contributed, stars, commits, followers
-    (strings, already formatted -- pass '\u2014' placeholders if unknown)."""
+def build():
     mascot_svg, mascot_bottom = _mascot_block()
 
     right_rows = list(ROWS)
@@ -63,22 +61,6 @@ def build(gh_stats):
         if key == "Uptime":
             value = uptime_string()
         body.append(_kv_row(COL2_X, y, key, value, delay))
-        y += ROW_H
-        delay += 0.025
-
-    y += ROW_H * 0.4
-    body.append(f'<g opacity="0">{svgkit.fade(delay, 0.4)}'
-                + svgkit.label(COL2_X, y, "GitHub Stats", 13, "ink", weight="600")
-                + f'<line x1="{COL2_X + 108}" y1="{y - 5}" x2="{WIDTH - PAD}" y2="{y - 5}" '
-                  f'class="rule" stroke-width="1"/></g>')
-    y += ROW_H
-    delay += 0.04
-
-    gh_values = [gh_stats.get("repos", "\u2014"), gh_stats.get("contributed", "\u2014"),
-                 gh_stats.get("stars", "\u2014"), gh_stats.get("commits", "\u2014"),
-                 gh_stats.get("followers", "\u2014")]
-    for label_, value in zip(GH_ROW_LABELS, gh_values):
-        body.append(_kv_row(COL2_X, y, label_, value, delay))
         y += ROW_H
         delay += 0.025
 

@@ -41,9 +41,6 @@ jobs:
 
       # Standard library only -- nothing to install.
       - name: Refresh neofetch.svg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_LOGIN: ${{ github.repository_owner }}
         run: python3 scripts/generate_neofetch.py
 
       - name: Commit if it changed

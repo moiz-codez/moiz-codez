@@ -13,7 +13,7 @@ from lib import svgkit
 
 WIDTH, HEIGHT = 1000, 620
 HUB = dict(x=500, y=330, w=210, h=64, title="MOIZ.SYS", sub="full-stack \u00d7 agentic pipeline")
-NODE_W, NODE_H = 190, 56
+NODE_W, NODE_H = 190, 72
 
 NODES = [
     ("Frontend", "React \u00b7 Next.js \u00b7 Tailwind"),
@@ -39,6 +39,31 @@ def layout():
         cy = max(88, min(HEIGHT - 60, cy))
         positions.append((cx, cy))
     return positions
+
+
+def wrap_subtitle(text, max_chars=31):
+    parts = text.split(" \u00b7 ")
+    lines = [parts[0]]
+    for part in parts[1:]:
+        candidate = f"{lines[-1]} \u00b7 {part}"
+        if len(candidate) <= max_chars:
+            lines[-1] = candidate
+        else:
+            lines.append(part)
+    return lines
+
+
+def node_text(cx, cy, title, subtitle):
+    lines = wrap_subtitle(subtitle)
+    title_y = cy - 13 if len(lines) > 1 else cy - 4
+    p = [svgkit.label(cx, title_y, svgkit.esc(title), 13, "ink", "middle", weight="600",
+                      spacing="0.6")]
+    if len(lines) == 1:
+        p.append(svgkit.label(cx, cy + 15, svgkit.esc(lines[0]), 9, "dim", "middle"))
+    else:
+        p.append(svgkit.label(cx, cy + 3, svgkit.esc(lines[0]), 9, "dim", "middle"))
+        p.append(svgkit.label(cx, cy + 15, svgkit.esc(lines[1]), 9, "dim", "middle"))
+    return "".join(p)
 
 
 def build():
@@ -84,9 +109,7 @@ def build():
         p.append(f'<g opacity="0">{svgkit.fade(delay, 0.5)}'
                  f'<rect x="{nx:.0f}" y="{ny:.0f}" width="{NODE_W}" height="{NODE_H}" '
                  f'rx="3" class="rule" fill="none" stroke-width="1"/>'
-                 + svgkit.label(cx, cy - 4, svgkit.esc(title), 13, "ink", "middle", weight="600",
-                                 spacing="0.6")
-                 + svgkit.label(cx, cy + 15, svgkit.esc(sub), 9, "dim", "middle") + '</g>')
+                 + node_text(cx, cy, title, sub) + '</g>')
 
     p.append(f'<line x1="48" y1="{HEIGHT-30}" x2="{WIDTH-48}" y2="{HEIGHT-30}" class="rule" stroke-width="1"/>')
     p.append(svgkit.label(WIDTH - 48, HEIGHT - 12, "LINES ANIMATE ONCE ON LOAD", 9.5, "dim", "end",

@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import svgkit
 
 WIDTH, HEIGHT = 940, 26
-WORDS = ["portrait", "system info", "ecosystem", "timeline"]
+WORDS = ["portrait", "system info", "ecosystem", "timeline", "projects"]
 
 
 def build(word):

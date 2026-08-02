@@ -56,5 +56,23 @@ class AggregationTests(unittest.TestCase):
         self.assertEqual(lsb.compute_percentages({}), [])
 
 
+class RenderTests(unittest.TestCase):
+    def test_build_contains_header_and_footer(self):
+        svg = lsb.build({"Python": 150, "Java": 30})
+        self.assertIn("LANGUAGE STATS", svg)
+        self.assertIn("FIG. 02", svg)
+        self.assertTrue(svg.strip().endswith("</svg>"))
+
+    def test_build_lists_each_top_language(self):
+        svg = lsb.build({"Python": 150, "Java": 30, "C": 20})
+        for name in ("Python", "Java", "C"):
+            self.assertIn(name, svg)
+
+    def test_build_uses_animated_fill(self):
+        svg = lsb.build({"Python": 150})
+        self.assertIn("clipPath", svg)
+        self.assertIn("animate", svg)
+
+
 if __name__ == "__main__":
     unittest.main()

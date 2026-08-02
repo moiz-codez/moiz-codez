@@ -1,6 +1,9 @@
 """Shared layout + data for lang-stats.svg, used by the one-off builder and
 the GitHub Actions refresh script so the two never drift."""
 import json
+import os
+import time
+import urllib.error
 import urllib.request
 
 from . import svgkit
@@ -8,10 +11,33 @@ from . import svgkit
 OWNER = "moiz-codez"
 TOP_LANGS = 7
 
+RETRY_STATUS = frozenset((403, 429, 500, 502, 503, 504))
+RETRY_ATTEMPTS = 3
+RETRY_DELAYS = (1, 2)
 
-def get_json(url):
-    with urllib.request.urlopen(url) as resp:
-        return json.load(resp)
+
+def _read_token():
+    return os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+
+
+def get_json(url, _urlopen=None, _token=_read_token, _sleep=time.sleep):
+    urlopen = _urlopen if _urlopen is not None else urllib.request.urlopen
+    token = _token() if callable(_token) else _token
+    headers = {"Authorization": f"Bearer {token}"} if token else {}
+    last_error = None
+    for attempt in range(RETRY_ATTEMPTS):
+        try:
+            with urlopen(urllib.request.Request(url, headers=headers), timeout=30) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in RETRY_STATUS:
+                raise
+        except urllib.error.URLError as exc:
+            last_error = exc
+        if attempt < len(RETRY_DELAYS):
+            _sleep(RETRY_DELAYS[attempt])
+    raise last_error
 
 
 def fetch_repos(owner=OWNER, _get_json=get_json):

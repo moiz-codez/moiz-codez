@@ -1,9 +1,91 @@
+import io
 import os
 import sys
 import unittest
+import urllib.error
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import lang_stats_build as lsb
+
+
+def _http_error(code):
+    err = urllib.error.HTTPError(
+        "https://api.github.com/x", code, "err", {}, io.BytesIO(b""))
+    err.close()
+    return err
+
+
+class GetJsonTests(unittest.TestCase):
+    def test_retries_transient_error_then_succeeds(self):
+        calls = []
+        sleeps = []
+
+        def fake_urlopen(request, timeout=None):
+            calls.append(request)
+            if len(calls) == 1:
+                raise _http_error(503)
+            return io.BytesIO(b'{"ok": true}')
+
+        result = lsb.get_json("https://api.github.com/x",
+                              _urlopen=fake_urlopen,
+                              _token=None,
+                              _sleep=sleeps.append)
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(sleeps, [1])
+
+    def test_exhausts_retries_and_raises_last_error(self):
+        def fake_urlopen(request, timeout=None):
+            raise _http_error(503)
+
+        with self.assertRaises(urllib.error.HTTPError) as ctx:
+            lsb.get_json("https://api.github.com/x",
+                         _urlopen=fake_urlopen,
+                         _token=None,
+                         _sleep=lambda _: None)
+        self.assertEqual(ctx.exception.code, 503)
+
+    def test_sends_authorization_header_when_token_provided(self):
+        seen = []
+
+        def fake_urlopen(request, timeout=None):
+            seen.append(request)
+            return io.BytesIO(b'{"ok": true}')
+
+        lsb.get_json("https://api.github.com/x",
+                     _urlopen=fake_urlopen,
+                     _token="test-token",
+                     _sleep=lambda _: None)
+        self.assertEqual(seen[0].get_header("Authorization"), "Bearer test-token")
+
+    def test_omits_authorization_header_when_no_token(self):
+        seen = []
+
+        def fake_urlopen(request, timeout=None):
+            seen.append(request)
+            return io.BytesIO(b'{"ok": true}')
+
+        lsb.get_json("https://api.github.com/x",
+                     _urlopen=fake_urlopen,
+                     _token=None,
+                     _sleep=lambda _: None)
+        self.assertIsNone(seen[0].get_header("Authorization"))
+
+    def test_non_transient_error_raises_without_retry(self):
+        calls = []
+        sleeps = []
+
+        def fake_urlopen(request, timeout=None):
+            calls.append(request)
+            raise _http_error(404)
+
+        with self.assertRaises(urllib.error.HTTPError) as ctx:
+            lsb.get_json("https://api.github.com/x",
+                         _urlopen=fake_urlopen,
+                         _token=None,
+                         _sleep=sleeps.append)
+        self.assertEqual(ctx.exception.code, 404)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(sleeps, [])
 
 
 class FetchTests(unittest.TestCase):
@@ -72,6 +154,12 @@ class RenderTests(unittest.TestCase):
         svg = lsb.build({"Python": 150})
         self.assertIn("clipPath", svg)
         self.assertIn("animate", svg)
+
+    def test_build_empty_chart_has_header_but_no_bars(self):
+        svg = lsb.build({})
+        self.assertTrue(svg.strip().endswith("</svg>"))
+        self.assertIn("LANGUAGE STATS", svg)
+        self.assertNotIn("langBar", svg)
 
 
 if __name__ == "__main__":

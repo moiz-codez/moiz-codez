@@ -32,6 +32,93 @@
 
 <img src="./timeline.svg" width="940" alt="career and education timeline"/>
 
+<img src="./hd-projects.svg" width="940" alt="projects"/>
+
+<img src="./lang-stats.svg" width="940" alt="language stats across repos"/>
+
+<table>
+<tr>
+<td width="50%">
+
+### [mojo-OS](https://github.com/moiz-codez/mojo-OS)
+Windows-like desktop environment that runs entirely in the browser — React, Next.js, Tailwind.
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-24292f?style=flat-square&logo=typescript&logoColor=white)](https://github.com/moiz-codez/mojo-OS)
+[![stars](https://img.shields.io/github/stars/moiz-codez/mojo-OS?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/mojo-OS)
+
+</td>
+<td width="50%">
+
+### [lappu-lang](https://github.com/moiz-codez/lappu-lang)
+A custom programming language built for a Compiler Construction course.
+
+[![Yacc](https://img.shields.io/badge/Yacc-24292f?style=flat-square)](https://github.com/moiz-codez/lappu-lang)
+[![stars](https://img.shields.io/github/stars/moiz-codez/lappu-lang?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/lappu-lang)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### [huffman-compression](https://github.com/moiz-codez/huffman-compression)
+Huffman compression in x86-64 assembly — encode and decode from the metal up.
+
+[![Assembly](https://img.shields.io/badge/Assembly-24292f?style=flat-square)](https://github.com/moiz-codez/huffman-compression)
+[![stars](https://img.shields.io/github/stars/moiz-codez/huffman-compression?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/huffman-compression)
+
+</td>
+<td width="50%">
+
+### [hospital-patient-record-management-system](https://github.com/moiz-codez/hospital-patient-record-management-system)
+Hospital patient records system built with C# Windows Forms and SQLite.
+
+[![C#](https://img.shields.io/badge/C%23-24292f?style=flat-square&logo=csharp&logoColor=white)](https://github.com/moiz-codez/hospital-patient-record-management-system)
+[![stars](https://img.shields.io/github/stars/moiz-codez/hospital-patient-record-management-system?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/hospital-patient-record-management-system)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### [guide-grad](https://github.com/moiz-codez/guide-grad)
+Helping Pakistani students navigate higher ed — universities, scholarships, ambassador connections.
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-24292f?style=flat-square&logo=typescript&logoColor=white)](https://github.com/moiz-codez/guide-grad)
+[![stars](https://img.shields.io/github/stars/moiz-codez/guide-grad?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/guide-grad)
+
+</td>
+<td width="50%">
+
+### [glidemate-ogn](https://github.com/moiz-codez/glidemate-ogn)
+Flask service streaming live glider positions from the Open Glider Network APRS feed.
+
+[![Python](https://img.shields.io/badge/Python-24292f?style=flat-square&logo=python&logoColor=white)](https://github.com/moiz-codez/glidemate-ogn)
+[![stars](https://img.shields.io/github/stars/moiz-codez/glidemate-ogn?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/glidemate-ogn)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### [2D-modular-game-engine](https://github.com/moiz-codez/2D-modular-game-engine)
+A flexible, modular 2D game engine built in Java.
+
+[![Java](https://img.shields.io/badge/Java-24292f?style=flat-square&logo=java&logoColor=white)](https://github.com/moiz-codez/2D-modular-game-engine)
+[![stars](https://img.shields.io/github/stars/moiz-codez/2D-modular-game-engine?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/2D-modular-game-engine)
+
+</td>
+<td width="50%">
+
+### [she_secure](https://github.com/moiz-codez/she_secure)
+A women's safety app built with Flutter.
+
+[![Dart](https://img.shields.io/badge/Dart-24292f?style=flat-square&logo=dart&logoColor=white)](https://github.com/moiz-codez/she_secure)
+[![stars](https://img.shields.io/github/stars/moiz-codez/she_secure?style=flat-square&label=stars&color=24292f)](https://github.com/moiz-codez/she_secure)
+
+</td>
+</tr>
+</table>
+
 ## ❤️ A Note of Thanks & Inspiration
 
 One of the things I love most about the open-source community is that knowledge, creativity, and inspiration are meant to be shared.
